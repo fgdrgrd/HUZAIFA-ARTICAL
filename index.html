@@ -1,37 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Huzaifa’s Story</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #222;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeText 2s forwards 1s;
+    }
+
+    #articleText {
+      font-size: 20px;
+      line-height: 1.8;
+      text-align: left;
+      white-space: pre-wrap;
+      opacity: 0;
+      animation: fadeText 2s forwards 2s;
+    }
+
+    button {
+      margin-top: 30px;
+      background: #ffcc00;
+      color: black;
+      padding: 12px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      opacity: 0;
+      animation: fadeText 2s forwards 3s;
+    }
+
+    button:hover {
+      background: #ffe066;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <h1>Huzaifa – The Boy Who Never Gave Up</h1>
+
+  <div id="articleText"></div>
+
+  <button onclick="writeArticle()">Write Article</button>
+</div>
+
+<script>
 function writeArticle() {
-  const article = `
-  <h2>The Story of Huzaifa</h2>
-  <p>
-  Huzaifa was a young boy who carried more strength in his heart than most people ever
-  realize. He lived his life without a real home, wandering through streets that were
-  always louder than his voice and colder than his clothes. But even in the hardest
-  nights, Huzaifa never stopped believing that tomorrow could be better.
-  </p>
+  const text = 
+`Huzaifa was a young homeless boy who carried more courage in his
+heart than most grown men. He wandered through cold nights and harsh
+streets with no home to return to, but he never let the darkness
+control his spirit.
 
-  <p>
-  Every morning, he woke up with hope. He would smile at strangers, help shopkeepers,
-  and share whatever little he had with others. People began to notice him — not for his
-  struggles, but for his kindness. Huzaifa reminded everyone that being homeless does
-  not mean being hopeless.
-  </p>
+Every morning, he woke up with hope. He greeted shopkeepers with a
+smile, helped elders carry bags, and shared the little food he found.
+People knew him not as “the homeless kid,” but as the kid with the
+brightest smile in the entire neighborhood.
 
-  <p>
-  One day, a teacher saw him reading an old torn book near a sidewalk. Impressed by his
-  determination, she decided to help him. She arranged food, warm clothes, and a place
-  to stay. Most importantly, she gave him a chance to study.
-  </p>
+But his nights were difficult. The wind was cold, the ground was hard,
+and the world felt too big for a boy with nothing. Still, Huzaifa
+never let sadness win. He believed that every sunrise brought a new
+chance to change his life.
 
-  <p>
-  Huzaifa’s life slowly changed. With every lesson he learned, he grew stronger. With
-  every challenge he faced, he grew braver. His journey was far from easy, but he proved
-  that a child with a dream cannot be defeated.
-  </p>
+One evening, when the streets were quiet, a teacher saw him reading a
+torn book under a streetlight. His eyes were focused, determined. She
+walked up to him and asked, “Why do you study so hard?”
 
-  <p>
-  Today, Huzaifa’s story inspires everyone who hears it — because he showed that even a
-  boy with nothing can become someone who gives others hope.
-  </p>
-  `;
+Huzaifa replied softly, “Because learning is the only thing they can’t
+take away from me.”
 
-  document.getElementById("article").innerHTML = article;
+That moment changed everything. The teacher brought him warm clothes,
+fresh food, and eventually found him a place to stay. More importantly,
+she gave him books, notebooks, and real lessons.
+
+For the first time in his life, Huzaifa sat in a classroom.
+
+He struggled at first. He wasn’t used to sitting still, reading long
+sentences, or solving math problems. But the boy who had survived cold
+streets was not afraid of hard work. Every day, he improved. Every week,
+he grew smarter. Every month, his dreams grew bigger.
+
+Slowly, he transformed from a lonely boy on the streets into a symbol
+of hope for everyone around him.
+
+Children admired him. Adults respected him. Teachers helped him. And
+Huzaifa proved something that many people forget:
+
+A boy with nothing can become someone with everything,
+as long as he never stops believing in himself.
+
+His story reminds the world that heroes are not always rich,
+famous, or powerful.
+
+Sometimes, a hero is just a boy with a torn book,
+a warm heart,
+and an unbreakable dream.`;
+
+  typeWriter(text, "articleText", 15);
 }
+
+function typeWriter(text, elementId, speed) {
+  let i = 0;
+  const element = document.getElementById(elementId);
+  element.innerHTML = ""; 
+
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+
+  typing();
+}
+</script>
+
+</body>
+</html>
